@@ -23,7 +23,7 @@ internal static class Program
             { ChatCommand = new() { Enabled = true, UseSeparateButton = args.Contains("--separate") } };
             bool transcript = args.Contains("--transcript");
             bool downloads = args.Contains("--downloads");
-            Window window = downloads ? new Window { Content = new DownloadsView() } : transcript ? new Window { Content = new TranscriptionView("en") } : profile ? new ProfileEditorWindow(sampleProfile, null) : new MainWindow(true);
+            Window window = downloads ? new Window { Content = new DownloadsView(args.Contains("--module") ? "transcription" : null) } : transcript ? new Window { Content = new TranscriptionView("en") } : profile ? new ProfileEditorWindow(sampleProfile, null) : new MainWindow(true);
             int width = transcript || downloads ? 900 : profile ? 744 : 900, height = profile ? 780 : 900;
             // Do not Show(): this test never installs hooks, opens a microphone or accesses another app.
             var content = (FrameworkElement)window.Content;

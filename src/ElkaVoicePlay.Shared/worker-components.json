@@ -1,0 +1,831 @@
+[
+  {
+    "Id": "medium",
+    "Name": "Whisper Medium",
+    "Description": "A middle-size transcription and English translation model, between Base and Large-v3. Works on CPU or with optional NVIDIA support.",
+    "Version": "1",
+    "Format": "parts",
+    "Assets": [
+      {
+        "Name": "VoicePlay-medium-v1.bin",
+        "Size": 1533763059,
+        "Sha256": "6C14D5ADEE5F86394037B4E4E8B59F1673B6CEE10E3CF0B11BBDBEE79C156208",
+        "ReleaseTag": "v0.6.0-preview.1"
+      }
+    ],
+    "Files": [
+      {
+        "Path": "Models/ggml-medium.bin",
+        "Size": 1533763059,
+        "Sha256": "6C14D5ADEE5F86394037B4E4E8B59F1673B6CEE10E3CF0B11BBDBEE79C156208"
+      }
+    ]
+  },
+  {
+    "Id": "large-v3",
+    "Name": "Whisper Large-v3",
+    "Description": "Higher-quality transcription and English translation. Works on CPU; add NVIDIA support for faster processing. Uses more memory than Base.",
+    "Version": "1",
+    "Format": "parts",
+    "Assets": [
+      {
+        "Name": "VoicePlay-large-v3-v1.bin.part1",
+        "Size": 1600000000,
+        "Sha256": "887FD84FA044F79B7BC5C72C2BB110A07B71E3A1784422893651BEF2BDDDC968",
+        "ReleaseTag": "v0.6.0-preview.1"
+      },
+      {
+        "Name": "VoicePlay-large-v3-v1.bin.part2",
+        "Size": 1495033483,
+        "Sha256": "3AE0FC04D61E43F5F77DDE17D0BBE6163FA058893683B7D260B190455F6241CB",
+        "ReleaseTag": "v0.6.0-preview.1"
+      }
+    ],
+    "Files": [
+      {
+        "Path": "Models/ggml-large-v3.bin",
+        "Size": 3095033483,
+        "Sha256": "64D182B440B98D5203C4F9BD541544D84C605196C4F7B845DFA11FB23594D1E2"
+      }
+    ]
+  },
+  {
+    "Id": "nemotron",
+    "Name": "Nemotron-3 speakers",
+    "Description": "An alternative speaker model, with up to eight speakers per input. Includes its CPU engine; NVIDIA support is a separate optional download. Speaker labels remain estimates.",
+    "Version": "1",
+    "Format": "zip",
+    "Assets": [
+      {
+        "Name": "VoicePlay-nemotron-v1.zip",
+        "Size": 106274005,
+        "Sha256": "FBC54C7A1733D341A7D9BE64919F0707445E7FBD77F54D26F4528673ECC9F738",
+        "ReleaseTag": "v0.6.0-preview.1"
+      }
+    ],
+    "Files": [
+      {
+        "Path": "Models/Nemotron-3-Diarization.q8_0.gguf",
+        "Size": 107012128,
+        "Sha256": "08456D9E22CD9A323C0364D98375F3746D6E68507EBB705CD46438C534C7A3A1"
+      },
+      {
+        "Path": "NemoCpu/concrt140.dll",
+        "Size": 324208,
+        "Sha256": "2405355F0A58067B258F8DF33C327E3A3D716EAAC5A3A5AEBB757842D85BD376"
+      },
+      {
+        "Path": "NemoCpu/ggml-base.dll",
+        "Size": 680960,
+        "Sha256": "460AFAA830B390ADD25AC11EE4F247BA2EA99368D337D068A5D84158E737F923"
+      },
+      {
+        "Path": "NemoCpu/ggml-cpu.dll",
+        "Size": 946688,
+        "Sha256": "F090417018AB0B87420CB81A56DB9D44AE5E6750ECFE36AA38F58863A0CC52E2"
+      },
+      {
+        "Path": "NemoCpu/ggml.dll",
+        "Size": 61952,
+        "Sha256": "25DFA47637EBC9B92D9A34FC72B897800D88877DABB2E95A5B3DF6D43FA99F6F"
+      },
+      {
+        "Path": "NemoCpu/llama.dll",
+        "Size": 2644480,
+        "Sha256": "D7EC0724FF6649056BD635CD26D973CA48DCDC8B8A1EB10AFF65C2ABCBA16982"
+      },
+      {
+        "Path": "NemoCpu/msvcp140.dll",
+        "Size": 557728,
+        "Sha256": "0F885B509A685D2BBFA652FED26B5FB31D88FBDAB0A978C641D1C7B8AA460AA9"
+      },
+      {
+        "Path": "NemoCpu/msvcp140_1.dll",
+        "Size": 35952,
+        "Sha256": "BFAD5AEF4C63A669E3C140655CDFDF395B6C979B400A447BD5DCB65ED8826C3D"
+      },
+      {
+        "Path": "NemoCpu/msvcp140_2.dll",
+        "Size": 280200,
+        "Sha256": "3EA06F0EE098B4823CB79599DF3780E7F23CCE52C19AAC31D2A0D47EFE33A5E9"
+      },
+      {
+        "Path": "NemoCpu/msvcp140_atomic_wait.dll",
+        "Size": 50304,
+        "Sha256": "640B2AEFCED484D0368EEA5BDD06ADDD0658A3A70A49256E560D6923B404A479"
+      },
+      {
+        "Path": "NemoCpu/msvcp140_codecvt_ids.dll",
+        "Size": 31872,
+        "Sha256": "F2069A52880EC885EE7F0511186100EB7FADA0411A2B4948FAFEA7735B878A18"
+      },
+      {
+        "Path": "NemoCpu/nemo_speech_asr.dll",
+        "Size": 4192256,
+        "Sha256": "F7129DC212C4D353FB76279E10244FED92C4F7814E80E408C51777A6045F11BE"
+      },
+      {
+        "Path": "NemoCpu/nemo_speech_asr_c.dll",
+        "Size": 56320,
+        "Sha256": "9F6390224BF8D9C7A81830507EC9D937277BEB079C9F0BDEE15BD0F25B11A7F5"
+      },
+      {
+        "Path": "NemoCpu/nemo_speech_nmt.dll",
+        "Size": 248832,
+        "Sha256": "0440CC36F37614CC5B2586A958A5710BC2449435E7D556A59CF375FA620AD527"
+      },
+      {
+        "Path": "NemoCpu/nemo_speech_nmt_c.dll",
+        "Size": 23552,
+        "Sha256": "4C2A572A75DF878516A0BC8A4F4950ADBBA68D010CBEB23A5985255AFCB95F98"
+      },
+      {
+        "Path": "NemoCpu/nemo_speech_tts.dll",
+        "Size": 2081792,
+        "Sha256": "D389A933752735C7444D1EAD2ED5E3C5170088BA91977392BDEE7D9BFFC9EED0"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/CONTRIBUTING.md",
+        "Size": 5464,
+        "Sha256": "8EB6355931E36CFA4C2E78421F4A8D1BDD7B05893CEDFC5294EBC867E1266006"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/README.md",
+        "Size": 9645,
+        "Sha256": "88E08DCF7188CCF9C164E3BC6AA2A99B0D2FCC7684945CC94F557FD75B801A2F"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/README.md",
+        "Size": 2422,
+        "Sha256": "024DFFFD238E96249CBF2BB713B2F920D492E1951A892412FAD18BC2CB68F498"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/api.md",
+        "Size": 11379,
+        "Sha256": "845C720A273B1831703DAC5FE0EDC5780E5D33C1654FA977621897F3F732EC66"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/asr/configuration.md",
+        "Size": 15086,
+        "Sha256": "F5CCF20D61F44A0BA8D0D9B71E7845D43815537542174E7D0C61285C7079FFA7"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/asr/customization.md",
+        "Size": 4589,
+        "Sha256": "842B55577D6B21F1710E97E8A606094E3B6ED4F317DA834C1C2BC54FC04FC2BD"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/asr/models.md",
+        "Size": 7219,
+        "Sha256": "CD3857F2BE9036CD38130F4FBAD61CBA6F706DE549C843249070E4C07E272EFC"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/build.md",
+        "Size": 11564,
+        "Sha256": "123AF3393460A3FFEC93F6409BC94EDC1F04287EAE84DDBC77C29F070CDE16A9"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/cli.md",
+        "Size": 11127,
+        "Sha256": "7B6836343D1CB90C6569BF9018CAEB67BA1F72D0B70F4967C1D1C3CAD911A107"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/clients.md",
+        "Size": 3038,
+        "Sha256": "701453B29DED3EEBD2194255DBE66C05514004C260361F8EF0E81AB99840292A"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/development/README.md",
+        "Size": 1017,
+        "Sha256": "DF9CED5E0EF77B0213997D98B31D7519D056929C14E99924A32D9FA6C141F241"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/development/asr-batching.md",
+        "Size": 6331,
+        "Sha256": "302CCA6F70C816087D89286338D2A7C9C2D9E3D21DBBF3E11215306358DAD475"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/development/cublas-shim.md",
+        "Size": 2365,
+        "Sha256": "3ED7D27F2FB18E9E4FF2A9C266C45FB505468870798DE0CD1C47DC8A7914D793"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/development/diagnostics.md",
+        "Size": 3823,
+        "Sha256": "52CADD5ABA37E874C351841E34E80F14A6E25845AECB33BB61E4FAC013D4E22C"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/development/releasing.md",
+        "Size": 4963,
+        "Sha256": "DCDDC8FA971DEFE4146866A43FC9E1C735343248E8E3B0811EC4CFBC5567A2B1"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/development/windows-build.md",
+        "Size": 8478,
+        "Sha256": "244AAB3973A21C0CFC52D3A48151230912DC92D6A0E84D5C037E86919A1D76C1"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/install.md",
+        "Size": 8424,
+        "Sha256": "3E4FFEC80F6369CE72F14054EFDE2B648A1E150EA64379B3A169DFF06D67C59E"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/model-conversion.md",
+        "Size": 2634,
+        "Sha256": "3A101C56859D0A66ABFE2A19B9691AEAAB0A0B7ADCAC7C78EA47437D2E2A88FF"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/nmt/configuration.md",
+        "Size": 3363,
+        "Sha256": "A3CEE11E0056BAD41A43831AB391DAAC7D872DCE243D4EC12CEF645B5BBA07B9"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/nmt/models.md",
+        "Size": 1614,
+        "Sha256": "7FBE9A0CD9B19DF3FAEF4458E2223E485C06E25D4CA1A83569F210C54B0A346E"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/s2s/README.md",
+        "Size": 2909,
+        "Sha256": "AFCBCA9CEA70EDD19CCBDA2A7F304562DCE4B5F5A76052167933D5800DAF7A1C"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/s2s/clients.md",
+        "Size": 5124,
+        "Sha256": "F8BA39A3411EA81ADC60B2D44B18A1094A9A4251D767EE013EA6CAB61AB11C3A"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/s2s/configuration.md",
+        "Size": 3548,
+        "Sha256": "33C7AF822C83DE7ACD6EE8F35BF0784ABCA41D9CDE31645AD43C6D8FFA2A98FD"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/s2s/docker.md",
+        "Size": 2554,
+        "Sha256": "F548B7C55A618B08DC080EC6C45C444C86A3DA0927CCF8BA8EB7431D0D70BF56"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/s2s/models.md",
+        "Size": 4654,
+        "Sha256": "DD735106DAFEE86BF354F1ED8AFBAC801653B87F6B6E162E9CA519F5B3BAD68B"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/sdk.md",
+        "Size": 7821,
+        "Sha256": "139B3C1EE655B6C5CA643581B26AD409CA51E86D62735E04CAB7122D006E2682"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/server.md",
+        "Size": 10729,
+        "Sha256": "FD08FADFA16CF7CEBFE808F7B5E5B768443925AD62F8FC6B3B6259941ED319A0"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/troubleshooting.md",
+        "Size": 2592,
+        "Sha256": "600CBE38BD8BC77A5AA59A16D0F674E37D70EE2B00D11B9FB8799761DBE583E6"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/tts/configuration.md",
+        "Size": 9342,
+        "Sha256": "9FEE9A89CA753796D8FDBDBE12E0CB03497BF145A6377A4CBDD2F01278ACB75C"
+      },
+      {
+        "Path": "NemoCpu/share/doc/nemo-speech/docs/tts/models.md",
+        "Size": 6075,
+        "Sha256": "DCF1AB78573BADC584A60182F2E6BEF874D9B6875AB58EA3AB836BC8064111D6"
+      },
+      {
+        "Path": "NemoCpu/share/licenses/nemo-speech/LICENSE",
+        "Size": 12454,
+        "Sha256": "6EB0D1526EF4D4E4F5516C6D679EB148AEFC36D0D2DF9D9CC1FA048FA287963C"
+      },
+      {
+        "Path": "NemoCpu/share/licenses/nemo-speech/NOTICE",
+        "Size": 239,
+        "Sha256": "0F55F591903FE80A07F8B1331029983B2B9F460967CCFB8DBE60F958958BEC25"
+      },
+      {
+        "Path": "NemoCpu/share/licenses/nemo-speech/THIRD_PARTY_NOTICES.md",
+        "Size": 10527,
+        "Sha256": "3B3163AB04D77BD137F5823D5DDA5328448F43FE34ED7780EDC8148B62B454C6"
+      },
+      {
+        "Path": "NemoCpu/share/licenses/nemo-speech/third_party/cpp-httplib/LICENSE",
+        "Size": 1097,
+        "Sha256": "BB546EAE5924D8EE842E0E567E6D533C5824BDEBCCF605F99A5B3429034E6697"
+      },
+      {
+        "Path": "NemoCpu/share/licenses/nemo-speech/third_party/ggml/LICENSE",
+        "Size": 1099,
+        "Sha256": "BCD8EC749126D45CB06737D0690295D73DF4B6E7E194205BCF91190368F27285"
+      },
+      {
+        "Path": "NemoCpu/share/licenses/nemo-speech/third_party/llama.cpp/LICENSE",
+        "Size": 1099,
+        "Sha256": "BCD8EC749126D45CB06737D0690295D73DF4B6E7E194205BCF91190368F27285"
+      },
+      {
+        "Path": "NemoCpu/share/licenses/nemo-speech/third_party/miniaudio/LICENSE",
+        "Size": 2645,
+        "Sha256": "85C4A6FE037F937D5CD3328E1630EC7C0A3338AC639DCA9A4FACE955BE9A71DB"
+      },
+      {
+        "Path": "NemoCpu/share/licenses/nemo-speech/third_party/vcpkg/abseil/LICENSE",
+        "Size": 11361,
+        "Sha256": "C79A7FEA0E3CAC04CD43F20E7B648E5A0FF8FA5344E644B0EE09CA1162B62747"
+      },
+      {
+        "Path": "NemoCpu/share/licenses/nemo-speech/third_party/vcpkg/protobuf/LICENSE",
+        "Size": 1732,
+        "Sha256": "6E5E117324AFD944DCF67F36CF329843BC1A92229A8CD9BB573D7A83130FEA7D"
+      },
+      {
+        "Path": "NemoCpu/share/licenses/nemo-speech/third_party/vcpkg/sentencepiece/LICENSE",
+        "Size": 11358,
+        "Sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30"
+      },
+      {
+        "Path": "NemoCpu/share/licenses/nemo-speech/third_party/vcpkg/utf8-range/LICENSE",
+        "Size": 1091,
+        "Sha256": "02DE69B64FC36D9E938F418E52723E42F0B2B226D58A9CB3C8DCBDF7059F5074"
+      },
+      {
+        "Path": "NemoCpu/share/nemo-speech/config/README.md",
+        "Size": 897,
+        "Sha256": "35B2E92B57EBF173E407E7F52AB0D9B36E437E7DB4312CBCB65CA6242CA7DDD6"
+      },
+      {
+        "Path": "NemoCpu/share/nemo-speech/config/asr.example.yaml",
+        "Size": 2970,
+        "Sha256": "E09C43A3D67BBFF6315347A6BA0DC66F7D3E9A76D20EC86062EC6829F434D3C6"
+      },
+      {
+        "Path": "NemoCpu/share/nemo-speech/config/diar.example.yaml",
+        "Size": 513,
+        "Sha256": "1E139625C638BA994C3875B127BBB7000B77F0EA3FA666EC2C39E6EEDF65A2B6"
+      },
+      {
+        "Path": "NemoCpu/share/nemo-speech/config/nmt.example.yaml",
+        "Size": 1020,
+        "Sha256": "B97E04A4D2A67A79D938C91864F458C5C898721768AF35F47181F941BE281EA0"
+      },
+      {
+        "Path": "NemoCpu/share/nemo-speech/config/server.example.yaml",
+        "Size": 3499,
+        "Sha256": "8656855C5B5C38B94A5FD721CF23CDBBB52CB3F8AD43518FAA9137CA3B687143"
+      },
+      {
+        "Path": "NemoCpu/share/nemo-speech/config/tts.example.yaml",
+        "Size": 1779,
+        "Sha256": "40201C0E0F5D44B52CA20EDA6392FC4E76CDD866F6B0EEDD13753BCE07C65A66"
+      },
+      {
+        "Path": "NemoCpu/share/nemo-speech/config/voicechat.yaml",
+        "Size": 399,
+        "Sha256": "A69F925BA33B900BD6A8BFAC5E22BD784C5368E24DC75DC534533F4A4234AE68"
+      },
+      {
+        "Path": "NemoCpu/share/nemo-speech/model-index.json",
+        "Size": 8189,
+        "Sha256": "3845C60102E74F6F09B0988F63107DDAFABED996BEDC5677531AB1877B6B0A0B"
+      },
+      {
+        "Path": "NemoCpu/vcomp140.dll",
+        "Size": 193152,
+        "Sha256": "55ABA23CDCD6484FBB06F4155B8CA75ADFCE7A881F10AFD0C49457165E677164"
+      },
+      {
+        "Path": "NemoCpu/vcruntime140.dll",
+        "Size": 124544,
+        "Sha256": "D5E4D9A3E835FA679450145D6A7D94E36573A509317111904D9B3712C30D9066"
+      },
+      {
+        "Path": "NemoCpu/vcruntime140_1.dll",
+        "Size": 49792,
+        "Sha256": "1F2D41C4AA5DB0BC33EBF7B66D72943A817D7CE6CBE880502A9403823633093F"
+      },
+      {
+        "Path": "licenses/NEMOTRON-MODEL-CARD.md",
+        "Size": 43239,
+        "Sha256": "5FE88CA4020D2EE134F806A0A02C52C19855B73047BC2E6F25B9171E1ABEEBFD"
+      },
+      {
+        "Path": "licenses/NEMOTRON-MODEL-LICENSE.txt",
+        "Size": 2707,
+        "Sha256": "FF2136B43C0F767AC157B28671BCB68E1F11F80381C8DF7AE5620890FFF52732"
+      }
+    ]
+  },
+  {
+    "Id": "nvidia",
+    "Name": "NVIDIA GPU support",
+    "Description": "Speeds up Whisper and optional Nemotron on a compatible NVIDIA GPU. Requires a CUDA 13-capable NVIDIA driver. Includes app-local runtimes; it does not install or change your driver.",
+    "Version": "1",
+    "Format": "zip",
+    "Assets": [
+      {
+        "Name": "VoicePlay-nvidia-v1.zip",
+        "Size": 647390458,
+        "Sha256": "AACB792203762BD6BDE59BCE419FB4F7414199EC3D9E071947CED68CF776F033",
+        "ReleaseTag": "v0.6.0-preview.1"
+      }
+    ],
+    "Files": [
+      {
+        "Path": "Cuda/cublas64_13.dll",
+        "Size": 51561584,
+        "Sha256": "6ABCF26071FF69BB01346613F05ABAC085778EFB8A7A9F91E23DA478E3938562"
+      },
+      {
+        "Path": "Cuda/cublasLt64_13.dll",
+        "Size": 480401520,
+        "Sha256": "FDCACA4277A72F87607F9804BF845EA8BB77785C97ABB74179BDAB058028C046"
+      },
+      {
+        "Path": "Cuda/cuda_cudart-LICENSE.txt",
+        "Size": 67875,
+        "Sha256": "F176E5FD245A4FF1D7AEE743E345E14B29C4B724F150E4858C4C6A313966D1FB"
+      },
+      {
+        "Path": "Cuda/cudart64_13.dll",
+        "Size": 470640,
+        "Sha256": "769440F43991B2AF0FBC7EE69D77F6F6D60F7468F585AE7CF1FB86451A51FCB1"
+      },
+      {
+        "Path": "Cuda/libcublas-LICENSE.txt",
+        "Size": 67875,
+        "Sha256": "F176E5FD245A4FF1D7AEE743E345E14B29C4B724F150E4858C4C6A313966D1FB"
+      },
+      {
+        "Path": "NemoCuda/concrt140.dll",
+        "Size": 324208,
+        "Sha256": "2405355F0A58067B258F8DF33C327E3A3D716EAAC5A3A5AEBB757842D85BD376"
+      },
+      {
+        "Path": "NemoCuda/ggml-base.dll",
+        "Size": 680960,
+        "Sha256": "21747A2010B6E13F44D264F1746CA900E42B02175A72E7F9257CE7B991403513"
+      },
+      {
+        "Path": "NemoCuda/ggml-cpu.dll",
+        "Size": 946688,
+        "Sha256": "1B1C8B11520860D0AAE09528247DC3D009D8B617D5426E8BA088B1FD00F53CA4"
+      },
+      {
+        "Path": "NemoCuda/ggml-cuda.dll",
+        "Size": 106126848,
+        "Sha256": "B8473AC9477878AF0FAB5D6F082900142E77D0A85F3FE1D1D17FA4CBB64E4B74"
+      },
+      {
+        "Path": "NemoCuda/ggml.dll",
+        "Size": 61952,
+        "Sha256": "18F3AC07E20375DEB0548AA46D387930AD15713F181570ACFC9078A47CCE8F9E"
+      },
+      {
+        "Path": "NemoCuda/llama.dll",
+        "Size": 2647552,
+        "Sha256": "8844F1AA63BB44F193349452E4E4051426A814374FD0B5889947CA7F8B2F7CAD"
+      },
+      {
+        "Path": "NemoCuda/msvcp140.dll",
+        "Size": 557728,
+        "Sha256": "0F885B509A685D2BBFA652FED26B5FB31D88FBDAB0A978C641D1C7B8AA460AA9"
+      },
+      {
+        "Path": "NemoCuda/msvcp140_1.dll",
+        "Size": 35952,
+        "Sha256": "BFAD5AEF4C63A669E3C140655CDFDF395B6C979B400A447BD5DCB65ED8826C3D"
+      },
+      {
+        "Path": "NemoCuda/msvcp140_2.dll",
+        "Size": 280200,
+        "Sha256": "3EA06F0EE098B4823CB79599DF3780E7F23CCE52C19AAC31D2A0D47EFE33A5E9"
+      },
+      {
+        "Path": "NemoCuda/msvcp140_atomic_wait.dll",
+        "Size": 50304,
+        "Sha256": "640B2AEFCED484D0368EEA5BDD06ADDD0658A3A70A49256E560D6923B404A479"
+      },
+      {
+        "Path": "NemoCuda/msvcp140_codecvt_ids.dll",
+        "Size": 31872,
+        "Sha256": "F2069A52880EC885EE7F0511186100EB7FADA0411A2B4948FAFEA7735B878A18"
+      },
+      {
+        "Path": "NemoCuda/nemo_speech_asr.dll",
+        "Size": 4209152,
+        "Sha256": "0ACBA5CEC6334342D8655DCA572A5A684CAD310BE99B4CB0FDA662452626C42E"
+      },
+      {
+        "Path": "NemoCuda/nemo_speech_asr_c.dll",
+        "Size": 56320,
+        "Sha256": "2CD5E8D75815F1BAE4EB92101FCA769B3ECA3B03626F7B84C54A0BABFE0074D3"
+      },
+      {
+        "Path": "NemoCuda/nemo_speech_nmt.dll",
+        "Size": 248832,
+        "Sha256": "14A61707F2DC60A260EDEB24DCEEEBBB1673B83F1BA1DB13B6F6337B36F11BCA"
+      },
+      {
+        "Path": "NemoCuda/nemo_speech_nmt_c.dll",
+        "Size": 23552,
+        "Sha256": "97C66654EFC6E2D9F6AD01AC44E14CEAF507DFB965127E17E88AFA0771DA7106"
+      },
+      {
+        "Path": "NemoCuda/nemo_speech_tts.dll",
+        "Size": 14348800,
+        "Sha256": "E84381AA1589347056E917090871AFD06988FAE7441A3643E2614C496BDA77D7"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/CONTRIBUTING.md",
+        "Size": 5464,
+        "Sha256": "8EB6355931E36CFA4C2E78421F4A8D1BDD7B05893CEDFC5294EBC867E1266006"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/README.md",
+        "Size": 9645,
+        "Sha256": "88E08DCF7188CCF9C164E3BC6AA2A99B0D2FCC7684945CC94F557FD75B801A2F"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/README.md",
+        "Size": 2422,
+        "Sha256": "024DFFFD238E96249CBF2BB713B2F920D492E1951A892412FAD18BC2CB68F498"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/api.md",
+        "Size": 11379,
+        "Sha256": "845C720A273B1831703DAC5FE0EDC5780E5D33C1654FA977621897F3F732EC66"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/asr/configuration.md",
+        "Size": 15086,
+        "Sha256": "F5CCF20D61F44A0BA8D0D9B71E7845D43815537542174E7D0C61285C7079FFA7"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/asr/customization.md",
+        "Size": 4589,
+        "Sha256": "842B55577D6B21F1710E97E8A606094E3B6ED4F317DA834C1C2BC54FC04FC2BD"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/asr/models.md",
+        "Size": 7219,
+        "Sha256": "CD3857F2BE9036CD38130F4FBAD61CBA6F706DE549C843249070E4C07E272EFC"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/build.md",
+        "Size": 11564,
+        "Sha256": "123AF3393460A3FFEC93F6409BC94EDC1F04287EAE84DDBC77C29F070CDE16A9"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/cli.md",
+        "Size": 11127,
+        "Sha256": "7B6836343D1CB90C6569BF9018CAEB67BA1F72D0B70F4967C1D1C3CAD911A107"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/clients.md",
+        "Size": 3038,
+        "Sha256": "701453B29DED3EEBD2194255DBE66C05514004C260361F8EF0E81AB99840292A"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/development/README.md",
+        "Size": 1017,
+        "Sha256": "DF9CED5E0EF77B0213997D98B31D7519D056929C14E99924A32D9FA6C141F241"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/development/asr-batching.md",
+        "Size": 6331,
+        "Sha256": "302CCA6F70C816087D89286338D2A7C9C2D9E3D21DBBF3E11215306358DAD475"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/development/cublas-shim.md",
+        "Size": 2365,
+        "Sha256": "3ED7D27F2FB18E9E4FF2A9C266C45FB505468870798DE0CD1C47DC8A7914D793"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/development/diagnostics.md",
+        "Size": 3823,
+        "Sha256": "52CADD5ABA37E874C351841E34E80F14A6E25845AECB33BB61E4FAC013D4E22C"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/development/releasing.md",
+        "Size": 4963,
+        "Sha256": "DCDDC8FA971DEFE4146866A43FC9E1C735343248E8E3B0811EC4CFBC5567A2B1"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/development/windows-build.md",
+        "Size": 8478,
+        "Sha256": "244AAB3973A21C0CFC52D3A48151230912DC92D6A0E84D5C037E86919A1D76C1"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/install.md",
+        "Size": 8424,
+        "Sha256": "3E4FFEC80F6369CE72F14054EFDE2B648A1E150EA64379B3A169DFF06D67C59E"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/model-conversion.md",
+        "Size": 2634,
+        "Sha256": "3A101C56859D0A66ABFE2A19B9691AEAAB0A0B7ADCAC7C78EA47437D2E2A88FF"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/nmt/configuration.md",
+        "Size": 3363,
+        "Sha256": "A3CEE11E0056BAD41A43831AB391DAAC7D872DCE243D4EC12CEF645B5BBA07B9"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/nmt/models.md",
+        "Size": 1614,
+        "Sha256": "7FBE9A0CD9B19DF3FAEF4458E2223E485C06E25D4CA1A83569F210C54B0A346E"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/s2s/README.md",
+        "Size": 2909,
+        "Sha256": "AFCBCA9CEA70EDD19CCBDA2A7F304562DCE4B5F5A76052167933D5800DAF7A1C"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/s2s/clients.md",
+        "Size": 5124,
+        "Sha256": "F8BA39A3411EA81ADC60B2D44B18A1094A9A4251D767EE013EA6CAB61AB11C3A"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/s2s/configuration.md",
+        "Size": 3548,
+        "Sha256": "33C7AF822C83DE7ACD6EE8F35BF0784ABCA41D9CDE31645AD43C6D8FFA2A98FD"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/s2s/docker.md",
+        "Size": 2554,
+        "Sha256": "F548B7C55A618B08DC080EC6C45C444C86A3DA0927CCF8BA8EB7431D0D70BF56"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/s2s/models.md",
+        "Size": 4654,
+        "Sha256": "DD735106DAFEE86BF354F1ED8AFBAC801653B87F6B6E162E9CA519F5B3BAD68B"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/sdk.md",
+        "Size": 7821,
+        "Sha256": "139B3C1EE655B6C5CA643581B26AD409CA51E86D62735E04CAB7122D006E2682"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/server.md",
+        "Size": 10729,
+        "Sha256": "FD08FADFA16CF7CEBFE808F7B5E5B768443925AD62F8FC6B3B6259941ED319A0"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/troubleshooting.md",
+        "Size": 2592,
+        "Sha256": "600CBE38BD8BC77A5AA59A16D0F674E37D70EE2B00D11B9FB8799761DBE583E6"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/tts/configuration.md",
+        "Size": 9342,
+        "Sha256": "9FEE9A89CA753796D8FDBDBE12E0CB03497BF145A6377A4CBDD2F01278ACB75C"
+      },
+      {
+        "Path": "NemoCuda/share/doc/nemo-speech/docs/tts/models.md",
+        "Size": 6075,
+        "Sha256": "DCF1AB78573BADC584A60182F2E6BEF874D9B6875AB58EA3AB836BC8064111D6"
+      },
+      {
+        "Path": "NemoCuda/share/licenses/nemo-speech/LICENSE",
+        "Size": 12454,
+        "Sha256": "6EB0D1526EF4D4E4F5516C6D679EB148AEFC36D0D2DF9D9CC1FA048FA287963C"
+      },
+      {
+        "Path": "NemoCuda/share/licenses/nemo-speech/NOTICE",
+        "Size": 239,
+        "Sha256": "0F55F591903FE80A07F8B1331029983B2B9F460967CCFB8DBE60F958958BEC25"
+      },
+      {
+        "Path": "NemoCuda/share/licenses/nemo-speech/THIRD_PARTY_NOTICES.md",
+        "Size": 10527,
+        "Sha256": "3B3163AB04D77BD137F5823D5DDA5328448F43FE34ED7780EDC8148B62B454C6"
+      },
+      {
+        "Path": "NemoCuda/share/licenses/nemo-speech/third_party/cpp-httplib/LICENSE",
+        "Size": 1097,
+        "Sha256": "BB546EAE5924D8EE842E0E567E6D533C5824BDEBCCF605F99A5B3429034E6697"
+      },
+      {
+        "Path": "NemoCuda/share/licenses/nemo-speech/third_party/ggml/LICENSE",
+        "Size": 1099,
+        "Sha256": "BCD8EC749126D45CB06737D0690295D73DF4B6E7E194205BCF91190368F27285"
+      },
+      {
+        "Path": "NemoCuda/share/licenses/nemo-speech/third_party/llama.cpp/LICENSE",
+        "Size": 1099,
+        "Sha256": "BCD8EC749126D45CB06737D0690295D73DF4B6E7E194205BCF91190368F27285"
+      },
+      {
+        "Path": "NemoCuda/share/licenses/nemo-speech/third_party/miniaudio/LICENSE",
+        "Size": 2645,
+        "Sha256": "85C4A6FE037F937D5CD3328E1630EC7C0A3338AC639DCA9A4FACE955BE9A71DB"
+      },
+      {
+        "Path": "NemoCuda/share/licenses/nemo-speech/third_party/vcpkg/abseil/LICENSE",
+        "Size": 11361,
+        "Sha256": "C79A7FEA0E3CAC04CD43F20E7B648E5A0FF8FA5344E644B0EE09CA1162B62747"
+      },
+      {
+        "Path": "NemoCuda/share/licenses/nemo-speech/third_party/vcpkg/protobuf/LICENSE",
+        "Size": 1732,
+        "Sha256": "6E5E117324AFD944DCF67F36CF329843BC1A92229A8CD9BB573D7A83130FEA7D"
+      },
+      {
+        "Path": "NemoCuda/share/licenses/nemo-speech/third_party/vcpkg/sentencepiece/LICENSE",
+        "Size": 11358,
+        "Sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30"
+      },
+      {
+        "Path": "NemoCuda/share/licenses/nemo-speech/third_party/vcpkg/utf8-range/LICENSE",
+        "Size": 1091,
+        "Sha256": "02DE69B64FC36D9E938F418E52723E42F0B2B226D58A9CB3C8DCBDF7059F5074"
+      },
+      {
+        "Path": "NemoCuda/share/nemo-speech/config/README.md",
+        "Size": 897,
+        "Sha256": "35B2E92B57EBF173E407E7F52AB0D9B36E437E7DB4312CBCB65CA6242CA7DDD6"
+      },
+      {
+        "Path": "NemoCuda/share/nemo-speech/config/asr.example.yaml",
+        "Size": 2970,
+        "Sha256": "E09C43A3D67BBFF6315347A6BA0DC66F7D3E9A76D20EC86062EC6829F434D3C6"
+      },
+      {
+        "Path": "NemoCuda/share/nemo-speech/config/diar.example.yaml",
+        "Size": 513,
+        "Sha256": "1E139625C638BA994C3875B127BBB7000B77F0EA3FA666EC2C39E6EEDF65A2B6"
+      },
+      {
+        "Path": "NemoCuda/share/nemo-speech/config/nmt.example.yaml",
+        "Size": 1020,
+        "Sha256": "B97E04A4D2A67A79D938C91864F458C5C898721768AF35F47181F941BE281EA0"
+      },
+      {
+        "Path": "NemoCuda/share/nemo-speech/config/server.example.yaml",
+        "Size": 3499,
+        "Sha256": "8656855C5B5C38B94A5FD721CF23CDBBB52CB3F8AD43518FAA9137CA3B687143"
+      },
+      {
+        "Path": "NemoCuda/share/nemo-speech/config/tts.example.yaml",
+        "Size": 1779,
+        "Sha256": "40201C0E0F5D44B52CA20EDA6392FC4E76CDD866F6B0EEDD13753BCE07C65A66"
+      },
+      {
+        "Path": "NemoCuda/share/nemo-speech/config/voicechat.yaml",
+        "Size": 399,
+        "Sha256": "A69F925BA33B900BD6A8BFAC5E22BD784C5368E24DC75DC534533F4A4234AE68"
+      },
+      {
+        "Path": "NemoCuda/share/nemo-speech/model-index.json",
+        "Size": 8189,
+        "Sha256": "3845C60102E74F6F09B0988F63107DDAFABED996BEDC5677531AB1877B6B0A0B"
+      },
+      {
+        "Path": "NemoCuda/vcomp140.dll",
+        "Size": 193152,
+        "Sha256": "55ABA23CDCD6484FBB06F4155B8CA75ADFCE7A881F10AFD0C49457165E677164"
+      },
+      {
+        "Path": "NemoCuda/vcruntime140.dll",
+        "Size": 124544,
+        "Sha256": "D5E4D9A3E835FA679450145D6A7D94E36573A509317111904D9B3712C30D9066"
+      },
+      {
+        "Path": "NemoCuda/vcruntime140_1.dll",
+        "Size": 49792,
+        "Sha256": "1F2D41C4AA5DB0BC33EBF7B66D72943A817D7CE6CBE880502A9403823633093F"
+      },
+      {
+        "Path": "licenses/WHISPER-MODEL-LICENSE.txt",
+        "Size": 1063,
+        "Sha256": "B5D65A59060E68C4FF940E1EDDFA6F94B2D68FDF58ED7F4DD57721C997E35E9D"
+      },
+      {
+        "Path": "runtimes/cuda/win-x64/ggml-base-whisper.dll",
+        "Size": 636928,
+        "Sha256": "4AEE9DDC683134AF3F142C6EB084B4CABBBB4A508A8A4A7E1C3EDB7FB4C2C015"
+      },
+      {
+        "Path": "runtimes/cuda/win-x64/ggml-cpu-whisper.dll",
+        "Size": 782848,
+        "Sha256": "65B8B0524C8C5CFF3FABD6312C38A4B03A5FEC5CABCEDC4C1FB7E761639AA027"
+      },
+      {
+        "Path": "runtimes/cuda/win-x64/ggml-cuda-whisper.dll",
+        "Size": 154601984,
+        "Sha256": "ED197873D29FDDD308CB79276288DCF313B64C58894A1AC5DB6C3A01A2A87443"
+      },
+      {
+        "Path": "runtimes/cuda/win-x64/ggml-whisper.dll",
+        "Size": 67072,
+        "Sha256": "C16BD1FE1D04AD708C407B11EE38F1EE44CAA7206E8FFDDD4B34FB2F4192781A"
+      },
+      {
+        "Path": "runtimes/cuda/win-x64/whisper.dll",
+        "Size": 484864,
+        "Sha256": "EF73371BA9D1EF0AB94316907CD50B9CBEC5DD0829B89BA6F3DC19871C32F40A"
+      }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "File": "voiceplay-horizontal-under-1mb.jpg",
+    "Bytes": 448065,
+    "Pixels": [
+      1774,
+      887
+    ],
+    "JPEGQuality": 94
+  },
+  {
+    "File": "voiceplay-vertical-under-1mb.jpg",
+    "Bytes": 501620,
+    "Pixels": [
+      1024,
+      1536
+    ],
+    "JPEGQuality": 94
+  }
+]

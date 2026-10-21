@@ -15,19 +15,23 @@ public sealed class DownloadsView : UserControl
     private readonly Dictionary<string, TextBlock> states = new();
     private readonly Button all = new() { Content = "Install all extras", Background = new SolidColorBrush(Color.FromRgb(40, 121, 104)) };
     private readonly Button cancel = new() { Content = "Cancel download", IsEnabled = false, Margin = new Thickness(8, 0, 0, 0) };
-    private readonly TextBlock message = new() { Text = "Base and standard speakers are included. Download extras only when you want them.", Margin = new Thickness(0, 8, 0, 8) };
+    private readonly TextBlock message = new() { Text = "Game chat and Base are included. Download extras only when you want them.", Margin = new Thickness(0, 8, 0, 8) };
     private readonly ProgressBar progress = new() { Minimum = 0, Maximum = 100, Height = 5, Foreground = Brushes.MediumAquamarine };
     private CancellationTokenSource? cancellation;
     private Task active = Task.CompletedTask;
     public bool IsBusy => cancellation != null;
     public event Action? BusyChanged;
+    public event Action? Installed;
+    private readonly IReadOnlyList<OptionalComponent> components;
 
-    public DownloadsView()
+    public DownloadsView(string? componentId = null)
     {
+        components = componentId == null ? OptionalComponents.All : new[] { OptionalComponents.Get(componentId) };
+        bool transcription = componentId == TranscriptionModule.Id;
         var panel = new StackPanel { Margin = new Thickness(28, 0, 28, 20) };
-        panel.Children.Add(new TextBlock { Text = "Downloads", FontSize = 28, FontWeight = FontWeights.SemiBold });
-        panel.Children.Add(new TextBlock { Text = "Add more power when you need it", Opacity = 0.7, Margin = new Thickness(0, 4, 0, 16) });
-        foreach (var component in OptionalComponents.All)
+        panel.Children.Add(new TextBlock { Text = transcription ? "Transcribe audio" : "Downloads", FontSize = 28, FontWeight = FontWeights.SemiBold });
+        panel.Children.Add(new TextBlock { Text = transcription ? "Download once to add multi-input transcription to VoicePlay" : "Add more power when you need it", Opacity = 0.7, Margin = new Thickness(0, 4, 0, 16) });
+        foreach (var component in components)
         {
             var body = new StackPanel(); var row = new DockPanel();
             var button = new Button { Content = "Download", MinWidth = 110, Margin = new Thickness(18, 0, 0, 0) };
@@ -42,10 +46,11 @@ public sealed class DownloadsView : UserControl
         var github = new Button { Content = "View GitHub release", HorizontalAlignment = HorizontalAlignment.Left };
         github.Click += (_, _) => { try { Process.Start(new ProcessStartInfo(OptionalComponents.Repository + "/releases/tag/" + OptionalComponents.ReleaseTag) { UseShellExecute = true }); } catch (Exception ex) { message.Text = ex.Message; } };
         panel.Children.Add(github);
-        panel.Children.Add(new TextBlock { Text = "Installed extras are shared by your copies of VoicePlay on this PC. After downloading, choose the model in Transcribe audio → Models & speakers. Game dictation keeps its own model.", Opacity = 0.7, FontSize = 12, Margin = new Thickness(0, 14, 0, 0) });
+        panel.Children.Add(new TextBlock { Text = "Installed extras are shared by your copies of VoicePlay on this PC. Transcribe audio activates after its download. Medium and Large-v3 can also be selected under Game speech model; each mode keeps its own choice.", Opacity = 0.7, FontSize = 12, Margin = new Thickness(0, 14, 0, 0) });
         var footer = new StackPanel { Margin = new Thickness(28, 12, 28, 18) }; footer.Children.Add(message); footer.Children.Add(progress);
         var actions = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 12, 0, 0) }; actions.Children.Add(all); actions.Children.Add(cancel); footer.Children.Add(actions);
-        all.Click += async (_, _) => await BeginAsync(OptionalComponents.All);
+        all.Visibility = transcription ? Visibility.Collapsed : Visibility.Visible;
+        all.Click += async (_, _) => await BeginAsync(components);
         cancel.Click += (_, _) => { cancellation?.Cancel(); cancel.IsEnabled = false; message.Text = "Cancelling… completed downloads will be reused on retry."; };
         var layout = new DockPanel(); DockPanel.SetDock(footer, Dock.Bottom); layout.Children.Add(footer);
         layout.Children.Add(new ScrollViewer { Content = panel, VerticalScrollBarVisibility = ScrollBarVisibility.Auto }); Content = layout;
@@ -53,13 +58,13 @@ public sealed class DownloadsView : UserControl
     }
     public void Refresh()
     {
-        foreach (var c in OptionalComponents.All)
+        foreach (var c in components)
         {
             bool installed = OptionalComponents.IsInstalled(c);
             states[c.Id].Text = (installed ? "Installed" : "Optional download") + " · " + OptionalComponents.SizeLabel(c.DownloadSize) + " download · " + OptionalComponents.SizeLabel(c.InstalledSize) + " on disk";
             buttons[c.Id].Content = installed ? "Installed" : "Download"; buttons[c.Id].IsEnabled = !IsBusy && !installed;
         }
-        all.IsEnabled = !IsBusy && OptionalComponents.All.Any(c => !OptionalComponents.IsInstalled(c));
+        all.IsEnabled = !IsBusy && components.Any(c => !OptionalComponents.IsInstalled(c));
     }
     private async Task BeginAsync(IReadOnlyList<OptionalComponent> components)
     {
@@ -68,6 +73,7 @@ public sealed class DownloadsView : UserControl
         active = InstallAsync(components, cancellation.Token);
         try { await active; }
         finally { cancellation.Dispose(); cancellation = null; cancel.IsEnabled = false; Refresh(); BusyChanged?.Invoke(); }
+        if (components.All(c => OptionalComponents.IsInstalled(c))) Installed?.Invoke();
     }
     private async Task InstallAsync(IReadOnlyList<OptionalComponent> components, CancellationToken token)
     {

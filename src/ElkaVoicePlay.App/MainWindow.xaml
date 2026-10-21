@@ -1,12 +1,12 @@
 <Window x:Class="ElkaVoicePlay.App.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Elka VoicePlay" Style="{StaticResource {x:Type Window}}" Width="920" Height="940" MinWidth="700" MinHeight="650"
+        Icon="Assets/ElkaVoicePlay.ico" Title="Elka VoicePlay" Style="{StaticResource {x:Type Window}}" Width="920" Height="940" MinWidth="700" MinHeight="650"
         WindowStartupLocation="CenterScreen" Loaded="OnLoaded" Closing="OnClosing">
   <DockPanel>
       <DockPanel DockPanel.Dock="Top" Margin="28,14,28,12">
         <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Top"><Button x:Name="GameProfilesButton" Click="OnGameProfiles" Content="Game profiles" IsEnabled="False" Margin="0,0,8,0" /><Button x:Name="TranscribeAudioButton" Content="Transcribe audio" Click="OnTranscribeAudio" Margin="0,0,8,0" /><Button x:Name="DownloadsButton" Content="Downloads" Click="OnDownloads" /></StackPanel>
-        <StackPanel><TextBlock Text="ELKA" Foreground="#69C7B2" FontSize="12" FontWeight="Bold" /><TextBlock Text="VoicePlay" FontSize="30" FontWeight="SemiBold" /><TextBlock Text="Hands-free chat for games" FontSize="12" Opacity="0.7" /></StackPanel>
+        <StackPanel Orientation="Horizontal"><Image Source="Assets/ElkaVoicePlay.png" Width="50" Height="58" Margin="0,0,12,0" VerticalAlignment="Top" /><StackPanel><TextBlock Text="ELKA" Foreground="#69C7B2" FontSize="12" FontWeight="Bold" /><TextBlock Text="VoicePlay" FontSize="30" FontWeight="SemiBold" /><TextBlock Text="Hands-free chat for games" FontSize="12" Opacity="0.7" /></StackPanel></StackPanel>
       </DockPanel>
     <Grid>
   <ScrollViewer x:Name="GamePage" VerticalScrollBarVisibility="Auto">

@@ -1,42 +1,35 @@
 ELKA VOICEPLAY — Hands-free chat for games
-0.6.0 preview · Windows 11 x64
 
-Extract the whole ZIP. Run ElkaVoicePlay.exe. Keep Models, Workers and the DLLs
-together. Base and standard speaker detection are included and work on CPU.
+Windows 11 x64 | Unsigned preview | 0.7.0
 
-GAME PROFILES
-The game model selector offers Base, Medium and Large-v3 for all profiles.
-Download missing models, then click Load. Transcription choices stay separate.
-Choose your microphone/language, select a game profile and Apply settings.
-Focus the game, hold the talk button, speak and release. Edit / Learn has
-collapsible cards for EXE links, chat actions, timings, chat-switch commands
-and keyboard protection. Profile name and Save/Cancel remain visible.
+GAME CHAT
+Run ElkaVoicePlay.exe. Keep all files and the Models folder together.
+Choose microphone, language and profile, then Apply settings.
+Focus your game, hold the talk button, speak, then release.
+The included Base model is ready for game chat. Medium and Large-v3 are optional.
 
-TRANSCRIBE AUDIO
-Open Audio inputs and enable/name the microphone or speaker loopback sources
-you want. Choose language/output, models and transcript file options in their
-cards. Start transcription; Stop & save finishes captured speech. The same
-window switches between modes. Game buttons are paused outside Game profiles.
+OPTIONAL TRANSCRIPTION
+Click Transcribe audio, then Download. The app gets its transcription component
+from the ElkaVoicePlay GitHub release, verifies it and activates the tab.
+It shares the included Base model. Standard speaker labels are in this component.
+You can enable up to three microphone or speaker/loopback inputs.
+Start transcription begins capture. Stop & save finishes and saves pending text.
 
-OPTIONAL EXTRAS / FULL SETUP
-Open Downloads. Download Medium, Large-v3, Nemotron speakers or NVIDIA support, or
-click Install all extras for the full setup. Downloads come from:
-https://github.com/torment78/ElkaVoicePlay/releases
+DOWNLOADS
+Choose individual optional components or Install all extras.
+Game and transcription model choices are separate. Larger models are optional.
+Game models use CPU; NVIDIA support is optional for transcription.
 
-VoicePlay checks each download and installs it automatically. Large-v3's two
-parts are joined for you. After installation, choose models in Transcribe
-audio > Models & speakers. Game dictation keeps its independent model.
+INSTALLER AND ICON
+The setup EXE provides a dark installer, Start-menu shortcut and optional desktop
+shortcut. The portable ZIP does not need installation.
 
-Medium: 1.53 GB. Large-v3: 3.10 GB. Nemotron: 106 MB. NVIDIA: 647 MB download.
-Temporary installation space is also needed. NVIDIA support requires a
-compatible NVIDIA GPU and CUDA 13-capable driver. No CUDA Toolkit or Python
-installation is required. Automatic uses CPU when the GPU pack is absent.
+Settings: %APPDATA%/ElkaSoft/ElkaVoicePlay/Saves
+Base model: %LOCALAPPDATA%/ElkaSoft/ElkaVoicePlay/Models
+New transcripts: Documents/ElkaSoft/ElkaVoicePlay/Transcripts
+Downloaded components: %LOCALAPPDATA%/ElkaSoft/ElkaVoicePlay/Components
+Previous VoicePlay/VoiceType settings and default transcript folders are imported
+without deleting originals. Custom model and transcript paths are preserved.
+Uninstall retains profiles, transcripts and downloaded components.
 
-Audio stays on your computer and is not saved. Transcript text is saved in
-the chosen folder. Speaker labels and timestamps are estimates.
-
-Settings: Documents\ElkaSoftware\ElkaVoicePlay. Prior VoiceType settings are
-imported without removing originals. Explicit model/transcript paths remain.
-Extras: %LOCALAPPDATA%\ElkaSoft\ElkaVoicePlay\Components.
-
-This is an unsigned preview. Share the complete small ZIP, not your settings.
+https://github.com/torment78/ElkaVoicePlay

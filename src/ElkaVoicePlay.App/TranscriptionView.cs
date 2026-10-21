@@ -162,6 +162,7 @@ public sealed class TranscriptionView : UserControl
         try
         {
             settings = ReadSettings();
+            _ = TranscriptionModule.RequireWorker();
             string models = Path.Combine(AppContext.BaseDirectory, "Models");
             string? component = ComponentFor(settings.TranscriptModel);
             string speechPath = component != null ? OptionalComponents.FileFor(component, "Models/ggml-" + component + ".bin") : Path.Combine(models, "ggml-base.bin");
@@ -177,7 +178,7 @@ public sealed class TranscriptionView : UserControl
             {
                 detail.Text = "Loading speaker model…";
                 bool nemo = settings.SpeakerModel == SpeakerModel.Nemotron3;
-                await diarizer.StartAsync(nemo ? "nemotron" : "classic", nemo ? OptionalComponents.FileFor("nemotron", "Models/Nemotron-3-Diarization.q8_0.gguf") : Path.Combine(models, "Speakers"), settings.Acceleration, captureStop.Token);
+                await diarizer.StartAsync(nemo ? "nemotron" : "classic", nemo ? OptionalComponents.FileFor("nemotron", "Models/Nemotron-3-Diarization.q8_0.gguf") : TranscriptionModule.SpeakerModels(), settings.Acceleration, captureStop.Token);
             }
             captureStop.Token.ThrowIfCancellationRequested();
             modelLabel.Text = $"Transcription: {speech.Backend}" + (settings.LabelSpeakers ? $" · Speakers: {diarizer.Backend}" : "");

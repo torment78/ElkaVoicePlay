@@ -2,6 +2,14 @@
 
 Live microphone quality, physical button learning and game compatibility require a person at the computer. Automated and local input tests supplement these checks.
 
+## Optional transcription and installer (0.7.0)
+
+1. Start the game-only package without downloaded transcription. Confirm game chat reaches Ready, profiles are retained, and Base/Medium/Large-v3 remain global game choices.
+2. Click Transcribe audio. Confirm the Download card shows its size. Cancel during a download, return to Game profiles, then retry. A failed or cancelled download must not activate a partial component.
+3. Finish the download. Transcription controls should open automatically in the same window without restarting; no capture should start until Start transcription is clicked.
+4. Restart the app and reopen Transcribe audio. The component should remain available. Verify standard speaker labels using known audio; the shared Base model should not be downloaded twice.
+5. Run the dark installer, verify the destination and desktop shortcut, then launch through the shortcut. Confirm the new icon in the taskbar and tray. Uninstall should retain profiles, transcripts and downloaded components.
+
 ## Completed transcription, translation and speakers (0.4.0)
 
 1. Switch between Transcribe audio and Game profiles. Confirm it stays the same window, retains input choices/preview and does not add a second taskbar window. Game talk/command buttons must remain inactive during transcription, including while finishing before a switch.
@@ -12,7 +20,7 @@ Live microphone quality, physical button learning and game compatibility require
 6. Disconnect an enabled device and try a deliberately heavy model/three-input load. Expect a visible error on lost samples or backlog and readable completed text, not an unlimited queue or silent loss.
 7. Enable Label speakers and record known alternating voices, including one returning after a pause and voices talking together. Compare labels with the actual people. Numbering is separate per input/session; this feature remains experimental.
 8. Choose a known non-English input language and English output, then compare the result with the spoken meaning. Repeat with Same as input. Automated fixtures do not establish accuracy on your own recordings.
-9. Run the affected VoiceMeeter loopback for several minutes with video speech, silence and resume. Confirm the previous 1–4 ms timing error does not recur. Check settings are retained after Start and restart.
+9. Run the affected VoiceMeeter loopback for several minutes with video speech, silence and resume. Confirm the previous 1â€“4 ms timing error does not recur. Check settings are retained after Start and restart.
 
 ## Complete-folder first launch (0.2.3)
 
@@ -24,7 +32,7 @@ Live microphone quality, physical button learning and game compatibility require
 ## Chat-switch command (0.2.2)
 
 1. Edit a profile, expand Chat-switch command and enable it. Start with Enter / Tab / Enter and suitable delays for that app. Save and restart; verify all choices persist.
-2. Run Test chat sequence locally → Test command buttons. Expect the three configured down/up pairs in order, with no text inserted.
+2. Run Test chat sequence locally â†’ Test command buttons. Expect the three configured down/up pairs in order, with no text inserted.
 3. With double-tap mode selected, physically tap and release the talk button twice within the configured window. Expect one command, no microphone recording and no change of selected profile. A single short tap, slow taps and keyboard repeat must not run the command.
 4. Hold the talk button beyond the window, then speak. Confirm one recording and ordinary delivery on release. Test a short tap followed by a long hold, and change the window to suit your tapping speed.
 5. Tick Use a separate button, choose or Learn a distinct key/mouse button and save. One complete press should run one command; holding it must not repeat the command. Normal hold-to-talk should start immediately.

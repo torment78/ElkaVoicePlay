@@ -31,7 +31,7 @@ public partial class MainWindow : Window
     private bool refreshingGameModels;
     private sealed record GameModelChoice(string Id, string Path, string Name, bool NeedsDownload)
     { public override string ToString() => Name; }
-    private bool downloadsMode;
+    private bool downloadsMode, transcriptionDownloadMode;
     private DownloadsView? downloadsView;
     private Forms.NotifyIcon? tray;
     private Forms.ToolStripMenuItem? trayEnabled;
@@ -132,7 +132,7 @@ public partial class MainWindow : Window
         menu.Items.Add("Cancel recording / transcription", null, (_, _) => CancelActiveWork());
         menu.Items.Add(new Forms.ToolStripSeparator());
         menu.Items.Add("Exit", null, async (_, _) => await ExitAsync());
-        tray = new Forms.NotifyIcon { Icon = System.Drawing.SystemIcons.Application, Visible = true, Text = "Elka VoicePlay", ContextMenuStrip = menu };
+        tray = new Forms.NotifyIcon { Icon = new System.Drawing.Icon(System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/ElkaVoicePlay;component/Assets/ElkaVoicePlay.ico")).Stream), Visible = true, Text = "Elka VoicePlay", ContextMenuStrip = menu };
         tray.DoubleClick += (_, _) => ShowWindow();
     }
 
@@ -143,8 +143,13 @@ public partial class MainWindow : Window
         transcriptMode = true; switchingMode = true; hook?.CancelPendingGesture();
         try
         {
+            if (!TranscriptionModule.IsInstalled())
+            {
+                ShowDownloads(TranscriptionModule.Id);
+                return;
+            }
             transcriptionView ??= new TranscriptionView(settings.Language, () => OnDownloads(this, new RoutedEventArgs()));
-            downloadsMode = false;
+            downloadsMode = false; transcriptionDownloadMode = false;
             TranscriptHost.Content = transcriptionView;
             GamePage.Visibility = Visibility.Collapsed; TranscriptHost.Visibility = Visibility.Visible;
             RefreshAvailability();
@@ -162,24 +167,33 @@ public partial class MainWindow : Window
         if (downloadsView != null) await downloadsView.StopAndWaitAsync();
             if (exiting) return;
             TranscriptHost.Visibility = Visibility.Collapsed; GamePage.Visibility = Visibility.Visible;
-            transcriptMode = false; downloadsMode = false;
+            transcriptMode = false; downloadsMode = false; transcriptionDownloadMode = false;
             RefreshGameModels();
         }
         finally { switchingMode = false; RefreshAvailability(); }
     }
     private async void OnDownloads(object sender, RoutedEventArgs e)
     {
-        if (downloadsMode || switchingMode || loading || exiting || controller?.IsBusy == true || commandCancellation != null || hook?.IsHeld == true) return;
+        if (downloadsMode && !transcriptionDownloadMode || downloadsView?.IsBusy == true || switchingMode || loading || exiting || controller?.IsBusy == true || commandCancellation != null || hook?.IsHeld == true) return;
         switchingMode = true; transcriptMode = true; hook?.CancelPendingGesture(); RefreshAvailability();
         try
         {
             if (transcriptionView != null) await transcriptionView.StopAndWaitAsync();
         if (downloadsView != null) await downloadsView.StopAndWaitAsync();
-            if (downloadsView == null) { downloadsView = new(); downloadsView.BusyChanged += RefreshAvailability; }
-            downloadsView.Refresh(); downloadsMode = true;
-            TranscriptHost.Content = downloadsView; GamePage.Visibility = Visibility.Collapsed; TranscriptHost.Visibility = Visibility.Visible;
+            ShowDownloads();
         }
         finally { switchingMode = false; RefreshAvailability(); }
+    }
+    private void ShowDownloads(string? componentId = null)
+    {
+        downloadsView = new DownloadsView(componentId);
+        downloadsView.BusyChanged += RefreshAvailability;
+        downloadsView.Installed += () =>
+        {
+            if (transcriptionDownloadMode && !exiting && TranscriptionModule.IsInstalled()) OnTranscribeAudio(this, new RoutedEventArgs());
+        };
+        downloadsMode = true; transcriptionDownloadMode = componentId == TranscriptionModule.Id;
+        TranscriptHost.Content = downloadsView; GamePage.Visibility = Visibility.Collapsed; TranscriptHost.Visibility = Visibility.Visible;
     }
     private void SetStatus(string title, string detail, bool error = false)
     {
@@ -202,8 +216,8 @@ public partial class MainWindow : Window
     {
         bool busy = transcriptMode || loading || controller?.IsBusy == true || commandCancellation != null || exiting;
         SettingsPanel.IsEnabled = !busy;
-        TranscribeAudioButton.IsEnabled = (!busy || downloadsMode) && !switchingMode && !exiting && downloadsView?.IsBusy != true;
-        DownloadsButton.IsEnabled = !downloadsMode && !loading && !switchingMode && !exiting && controller?.IsBusy != true && commandCancellation == null;
+        TranscribeAudioButton.IsEnabled = (!busy || downloadsMode && !transcriptionDownloadMode) && !switchingMode && !exiting && downloadsView?.IsBusy != true;
+        DownloadsButton.IsEnabled = (!downloadsMode || transcriptionDownloadMode) && downloadsView?.IsBusy != true && !loading && !switchingMode && !exiting && controller?.IsBusy != true && commandCancellation == null;
         GameProfilesButton.IsEnabled = transcriptMode && !switchingMode && !exiting && downloadsView?.IsBusy != true;
         PreviewButton.IsEnabled = !loading && !exiting && speech.IsReady && EnabledCheck.IsChecked == true && (previewHeld || !busy);
         CancelButton.IsEnabled = busy && !exiting;
@@ -275,7 +289,7 @@ public partial class MainWindow : Window
         if (loading || controller?.IsBusy == true) return;
         loading = true;
         RefreshAvailability();
-        SetStatus("Preparing model", "On first launch, the included Base model is installed in your Documents folder.");
+        SetStatus("Preparing model", "On first launch, the included Base model is prepared in your ElkaSoft app-data folder.");
         try
         {
             loadTask = PrepareAndLoadModelAsync(ModelPathBox.Text.Trim(), lifetime.Token);

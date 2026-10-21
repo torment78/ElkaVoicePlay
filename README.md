@@ -1,36 +1,51 @@
 # Elka VoicePlay
 
+![Elka VoicePlay — Hands-free chat for games](graphics/voiceplay-horizontal-under-1mb.jpg)
+
 **Hands-free chat for games**
 
 Hold a button, speak, and let VoicePlay type into your game's chat. Each game can have its own talk button, chat keys and timing. VoicePlay also turns microphone and speaker audio into timestamped transcripts, with optional speaker labels and English translation.
 
 Windows 11 · x64 · local processing · by ElkaSoft
 
-## Download and start
+## Download and install
 
-1. Open the [releases page](https://github.com/torment78/ElkaVoicePlay/releases) and download **ElkaVoicePlay-0.6.0-win-x64-small.zip**.
-2. Extract the entire ZIP into a folder and run **ElkaVoicePlay.exe**. Keep its Models and Workers folders alongside it.
-3. Choose your microphone and language, select a game profile, then Apply settings.
+Download **ElkaVoicePlay-0.7.0-setup-win-x64.exe** from the [latest preview release](https://github.com/torment78/ElkaVoicePlay/releases/tag/v0.7.0-preview.1).
+
+1. Run the dark installer and choose where to install. The default is `Program Files/ElkaSoft/Elka VoicePlay`.
+2. Leave **Create a desktop shortcut** selected to get the new gold icon. A Start-menu shortcut is created as well.
+3. Open VoicePlay, choose your microphone and language, select a game profile, then **Apply settings**.
 4. Focus the game, hold the talk button, speak and release it. VoicePlay checks the destination when it is ready to send.
 
-The small package includes **Whisper Base** and the **standard speaker model (Classic)**. It works without NVIDIA software, Python, a paid API or an account. This is an **unsigned preview**. Windows may show an unfamiliar-publisher warning.
+The installer includes the game application and **Whisper Base**. Game chat works immediately without downloading transcription, NVIDIA software, Python, a paid API or an account. This is an **unsigned preview**; Windows may display an unfamiliar-publisher warning.
 
-## Optional downloads and the full setup
+Prefer a portable folder? Download **ElkaVoicePlay-0.7.0-win-x64-game.zip**, extract the entire ZIP, and run **ElkaVoicePlay.exe**. Keep the included files and Models folder together. Send testers the installer or the complete ZIP, not your settings folder.
 
-Open **Downloads** in the app. Choose an individual extra or click **Install all extras** for the full setup:
+## Add transcription when you need it
 
-| Optional extra | Download | Purpose |
+Click **Transcribe audio**. The first time, this tab shows **Download** and the package size. Click it to download the transcription component from this same GitHub repository. VoicePlay checks the files, installs them, and opens the transcription controls automatically. No restart or manual file placement is required.
+
+This optional component includes multi-input microphone/loopback transcription, timestamped TXT files, English translation and the standard speaker model (Classic). It shares the Base speech model already included in the game app. It does not duplicate Base or include the larger optional models.
+
+Until you download this component, its worker and speaker-model binaries are absent from the game package. Game chat, profile selection and its own model choice work independently. A cancelled or failed download can be retried from the same tab; game chat remains available.
+
+## Optional models and the full setup
+
+Open **Downloads** in the app. Choose individual components or **Install all extras** for the full setup:
+
+| Optional component | Download | Purpose |
 |---|---:|---|
-| Whisper Medium | 1.53 GB | Middle-size alternative between Base and Large-v3 |
-| Whisper Large-v3 | 3.10 GB | Higher-quality transcription and English translation |
+| Transcribe audio | 85.9 MB | Multi-input transcription and standard speaker labels |
+| Whisper Medium | 1.53 GB | Middle-size alternative for game chat or transcription |
+| Whisper Large-v3 | 3.10 GB | Larger speech model for game chat or transcription |
 | Nemotron-3 speakers | 106 MB | Alternative speaker identification, up to eight voices per input |
-| NVIDIA GPU support | 647 MB | Faster Whisper and Nemotron processing on compatible GPUs |
+| NVIDIA GPU support | 647 MB | GPU processing for transcription and Nemotron on compatible GPUs |
 
-All downloads come from this repository's versioned GitHub release. VoicePlay checks sizes and SHA-256 checksums, joins Large-v3's two parts, and installs everything in the correct place. Progress, cancellation and retry are built in. Completed parts are reused after an interrupted download. Allow additional temporary disk space during installation.
+Downloads come from versioned releases in this repository. Existing model packs remain pinned to their original release; the new transcription component is versioned with this app. VoicePlay checks sizes and SHA-256 checksums, joins Large-v3's two parts, and installs everything in the correct place. Progress, cancellation and retry are built in. Completed parts are reused after an interrupted download. Allow additional temporary disk space during installation.
 
-After downloading, select the model under **Transcribe audio → Models & speakers**. Downloading does not change your selections. **The game model stays separate.** Automatic processing uses CPU until NVIDIA support is installed and a compatible GPU/driver is available. The NVIDIA pack does not install or modify drivers; it requires a CUDA 13-capable NVIDIA driver. Large-v3 works on CPU too, but needs more memory and processing time.
+After downloading speech models, select them under **Game speech model** or **Transcribe audio → Models & speakers**. Each mode keeps its own selection; downloading does not change your chosen model. Game recognition uses CPU. Transcription's Automatic processing uses CPU until NVIDIA support and a compatible GPU/driver are available. The NVIDIA pack requires a CUDA 13-capable driver and does not install or change drivers.
 
-The small ZIP plus **Install all extras** is the full version. The release also contains the individual component assets for verification and archival; use the app to install them rather than manually unpacking them.
+The game installer plus **Install all extras** is the full version. Individual component assets on the release page are for the download manager; use the app to install them.
 
 ## Game profiles
 
@@ -56,7 +71,7 @@ Keyboard protection filters physical keys only during chat delivery. The mouse r
 
 ## Transcribe audio
 
-Switch to **Transcribe audio** in the same window. Game talk buttons are paused on this tab.
+Switch to **Transcribe audio** in the same window; download its component first if prompted. Game talk buttons are paused on this tab.
 
 1. Expand **Audio inputs**. Enable up to three inputs, choose devices and give them names. Microphone inputs include virtual recording endpoints. Speaker / loopback inputs capture what plays through the selected headphones or speakers. Disabled inputs are not captured.
 2. Expand **Language & translation** to choose the input language and either the same language or English output.
@@ -72,9 +87,23 @@ Switching tabs finishes buffered audio first. Models run in separate worker proc
 
 Audio is processed locally in memory and is not saved or uploaded. Only text transcripts are saved. Downloads contact GitHub only when requested.
 
-New settings are stored in `Documents/ElkaSoftware/ElkaVoicePlay`. Existing VoiceType settings are imported once without overwriting existing VoicePlay settings. Your previous files and explicit model/transcript paths are preserved. Optional components are stored in `%LOCALAPPDATA%/ElkaSoft/ElkaVoicePlay/Components` and shared by your VoicePlay copies on this PC.
+VoicePlay uses the **ElkaSoft** family folders:
 
-Send testers the complete small ZIP, not your settings folder. Each person can download the extras they want.
+| Content | Default folder |
+|---|---|
+| Installed application | `Program Files/ElkaSoft/Elka VoicePlay` |
+| Profiles and settings | `%APPDATA%/ElkaSoft/ElkaVoicePlay/Saves` |
+| Prepared game Base model | `%LOCALAPPDATA%/ElkaSoft/ElkaVoicePlay/Models` |
+| Downloaded components | `%LOCALAPPDATA%/ElkaSoft/ElkaVoicePlay/Components` |
+| New transcript files | `Documents/ElkaSoft/ElkaVoicePlay/Transcripts` |
+
+Settings are imported from the previous VoicePlay folder, or VoiceType if needed, without overwriting existing ElkaSoft settings. Known legacy default model/transcript paths are updated to the new layout; default transcript files are copied when the new transcript folder does not exist. Custom paths are preserved. Original files and an exact settings backup are kept. Downloaded components are shared by your VoicePlay copies on this PC.
+
+Uninstall removes the installed application and its shortcuts. Your profiles, transcripts and downloaded components are retained. Each person can choose the extras they want.
+
+## Artwork
+
+The [graphics folder](graphics) contains the original horizontal and vertical artwork, versions of both below 1 MB, the transparent icon and a multi-size Windows ICO. The release also includes **ElkaVoicePlay-0.7.0-artwork.zip**. See the [artwork guide](graphics/README.md) for filenames and generation prompts.
 
 ## Development
 

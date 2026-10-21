@@ -38,7 +38,9 @@ public sealed record AppSettings
 
 public static class DataPaths
 {
-    public static string Root => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ElkaSoftware", "ElkaVoicePlay");
-    public static string Models => Path.Combine(Root, "Models");
+    public static string Root => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ElkaSoft", "ElkaVoicePlay", "Saves");
+    public static string LocalRoot => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ElkaSoft", "ElkaVoicePlay");
+    public static string Models => Path.Combine(LocalRoot, "Models");
+    public static string Transcripts => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ElkaSoft", "ElkaVoicePlay", "Transcripts");
     public static string Settings => Path.Combine(Root, "settings.json");
 }

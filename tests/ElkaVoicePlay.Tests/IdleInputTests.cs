@@ -9,16 +9,28 @@ public sealed class IdleInputTests
 {
     [Fact] public void MouseMotionAndWheelNeverReadNativeDataOrAllocate()
     {
-        // A null lParam is intentionally invalid for decoding. Motion must return before reading it.
-        for (int i = 0; i < 1000; i++) KeyboardHook.TryReadMouseButton(0, 0x200, 0, out _);
-        long before = GC.GetAllocatedBytesForCurrentThread();
+        // Measure on a dedicated thread so test-runner work cannot enter the allocation count.
+        // A null lParam is intentionally invalid: motion/wheel must return before reading it.
+        long allocated = -1;
         int decoded = 0;
-        for (int i = 0; i < 100000; i++)
+        var measurement = new Thread(() =>
         {
-            if (KeyboardHook.TryReadMouseButton(0, 0x200, 0, out _)) decoded++;
-            if (KeyboardHook.TryReadMouseButton(0, 0x20A, 0, out _)) decoded++;
-        }
-        long allocated = GC.GetAllocatedBytesForCurrentThread() - before;
+            for (int i = 0; i < 1000; i++)
+            {
+                KeyboardHook.TryReadMouseButton(0, 0x200, 0, out _);
+                KeyboardHook.TryReadMouseButton(0, 0x20A, 0, out _);
+            }
+            _ = GC.GetAllocatedBytesForCurrentThread();
+            long before = GC.GetAllocatedBytesForCurrentThread();
+            for (int i = 0; i < 100000; i++)
+            {
+                if (KeyboardHook.TryReadMouseButton(0, 0x200, 0, out _)) decoded++;
+                if (KeyboardHook.TryReadMouseButton(0, 0x20A, 0, out _)) decoded++;
+            }
+            allocated = GC.GetAllocatedBytesForCurrentThread() - before;
+        }) { IsBackground = true };
+        measurement.Start();
+        Assert.True(measurement.Join(TimeSpan.FromSeconds(10)), "Allocation measurement timed out.");
         Assert.Equal(0, decoded); Assert.Equal(0, allocated);
         Assert.False(KeyboardHook.TryReadMouseButton(-1, 0x201, 0, out _));
     }

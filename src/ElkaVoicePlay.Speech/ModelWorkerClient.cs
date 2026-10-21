@@ -13,11 +13,11 @@ public sealed class ModelWorkerClient : IWordTranscriptRecognizer, ISpeakerDiari
     public string Backend { get; private set; } = "Not loaded";
     public int? ProcessId => process?.Id;
     public string Diagnostics { get { lock (diagnostics) return string.Join(Environment.NewLine, diagnostics); } }
-    public static string DefaultExecutable => Path.Combine(AppContext.BaseDirectory, "Workers", "ElkaVoicePlay.ModelWorker.exe");
+    public static string DefaultExecutable => TranscriptionModule.RequireWorker();
     public async Task StartAsync(string kind, string modelPath, ModelAcceleration acceleration, CancellationToken token, string? executable = null, string? componentsRoot = null)
     {
-        executable ??= DefaultExecutable;
-        if (!File.Exists(executable)) throw new FileNotFoundException("Model worker is missing. Extract the complete application folder.", executable);
+        executable ??= TranscriptionModule.RequireWorker(componentsRoot);
+        if (!File.Exists(executable)) throw new FileNotFoundException("The transcription worker is missing. Open Transcribe audio and download the component again.", executable);
         if (!File.Exists(modelPath) && kind != "classic") throw new FileNotFoundException("Selected model is missing. Open Downloads in VoicePlay, or extract the complete small application folder including Models.", modelPath);
         var info = new ProcessStartInfo(executable) { UseShellExecute = false, CreateNoWindow = true,
             WorkingDirectory = Path.GetDirectoryName(executable)!, RedirectStandardError = true, RedirectStandardOutput = true };

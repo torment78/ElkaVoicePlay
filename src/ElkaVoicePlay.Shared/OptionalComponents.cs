@@ -2,7 +2,7 @@ using System.Text.Json;
 
 namespace ElkaVoicePlay.Shared;
 
-public sealed record ComponentAsset(string Name, long Size, string Sha256);
+public sealed record ComponentAsset(string Name, long Size, string Sha256, string? ReleaseTag = null);
 public sealed record ComponentFile(string Path, long Size, string Sha256);
 public sealed record OptionalComponent(string Id, string Name, string Description, string Version, string Format,
     ComponentAsset[] Assets, ComponentFile[] Files)
@@ -14,8 +14,8 @@ public sealed record OptionalComponent(string Id, string Name, string Descriptio
 public static class OptionalComponents
 {
     public const string Repository = "https://github.com/torment78/ElkaVoicePlay";
-    public const string ReleaseTag = "v0.6.0-preview.1";
-    public static string Root => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ElkaSoft", "ElkaVoicePlay", "Components");
+    public const string ReleaseTag = "v0.7.0-preview.1";
+    public static string Root => Path.Combine(DataPaths.LocalRoot, "Components");
     public static IReadOnlyList<OptionalComponent> All { get; } = Load();
     private static OptionalComponent[] Load()
     {
@@ -26,7 +26,7 @@ public static class OptionalComponents
     public static OptionalComponent Get(string id) => All.Single(c => c.Id == id);
     public static string DirectoryFor(OptionalComponent component, string? root = null) => Path.Combine(root ?? Root, component.Id + "-" + component.Version);
     public static string FileFor(string id, string path, string? root = null) => Path.Combine(DirectoryFor(Get(id), root), path);
-    public static Uri DownloadUri(ComponentAsset asset) => new($"{Repository}/releases/download/{ReleaseTag}/{Uri.EscapeDataString(asset.Name)}");
+    public static Uri DownloadUri(ComponentAsset asset) => new($"{Repository}/releases/download/{asset.ReleaseTag ?? ReleaseTag}/{Uri.EscapeDataString(asset.Name)}");
     public static bool IsInstalled(string id, string? root = null) => IsInstalled(Get(id), root);
     public static bool IsInstalled(OptionalComponent component, string? root = null)
     {

@@ -4,6 +4,11 @@ using ElkaVoicePlay.Core;
 using ElkaVoicePlay.Speech;
 using NAudio.Wave;
 
+if (args.Length == 6 && args[0] == "--transcription-component-fixture")
+{
+    try { return await ModuleProbe.RunAsync(args); }
+    catch (Exception ex) { Console.Error.WriteLine(ex); return 1; }
+}
 if (args.Length == 6 && args[0] == "--components-fixture")
 {
     try { return await ComponentProbe.RunAsync(args); }

@@ -1,1 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk"><ItemGroup><EmbeddedResource Include="optional-components.json" /></ItemGroup></Project>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><ComponentCatalogFile Condition="'$(ComponentCatalogFile)' == ''">optional-components.json</ComponentCatalogFile></PropertyGroup>
+  <ItemGroup><EmbeddedResource Include="$(ComponentCatalogFile)" LogicalName="ElkaVoicePlay.Shared.optional-components.json" /></ItemGroup>
+</Project>

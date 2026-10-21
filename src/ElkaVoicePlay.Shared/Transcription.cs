@@ -23,7 +23,7 @@ public sealed record TranscriptionSettings
     public TranscriptModel TranscriptModel { get; init; } = TranscriptModel.Base;
     public SpeakerModel SpeakerModel { get; init; } = SpeakerModel.Classic;
     public ModelAcceleration Acceleration { get; init; } = ModelAcceleration.Automatic;
-    public string Folder { get; init; } = Path.Combine(DataPaths.Root, "Transcripts");
+    public string Folder { get; init; } = DataPaths.Transcripts;
     public string Language { get; init; } = "auto";
     public TranscriptSource[] Sources { get; init; } =
     [

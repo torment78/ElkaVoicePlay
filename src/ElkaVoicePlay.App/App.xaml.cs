@@ -17,9 +17,10 @@ public partial class App : System.Windows.Application
         }
         try
         {
-            ElkaVoicePlay.Core.LegacySettingsMigration.Import(
-                System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ElkaSoftware", "ElkaVoiceType"),
-                ElkaVoicePlay.Shared.DataPaths.Root);
+            string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            ElkaVoicePlay.Core.ElkaStorageMigration.Import(
+                new[] { System.IO.Path.Combine(documents, "ElkaSoftware", "ElkaVoicePlay"), System.IO.Path.Combine(documents, "ElkaSoftware", "ElkaVoiceType") },
+                ElkaVoicePlay.Shared.DataPaths.Root, ElkaVoicePlay.Shared.DataPaths.Models, ElkaVoicePlay.Shared.DataPaths.Transcripts);
         }
         catch (Exception ex)
         {

@@ -1,21 +1,21 @@
 # Third-party components
 
-The prototype uses these upstream projects; their licenses apply to their respective code and binaries, independently of the application's license.
+Elka VoicePlay uses these upstream projects; their licenses apply to their respective code and binaries, independently of the application's license.
 
 | Component | Pinned version | License / source |
 |---|---|---|
 | Whisper.net and CPU runtime | 1.9.1 | [MIT](https://github.com/sandrohanea/whisper.net/blob/main/LICENSE), [source](https://github.com/sandrohanea/whisper.net) |
 | whisper.cpp (via Whisper.net runtime) | Runtime package's compatible bundled build | [MIT](https://github.com/ggml-org/whisper.cpp/blob/master/LICENSE) |
 | NAudio.Wasapi / NAudio.Core | 2.3.0 | [MIT](https://github.com/naudio/NAudio/blob/master/license.txt) |
-| OpenAI Whisper weights converted to ggml | tiny/base/small/medium | [Whisper license](https://github.com/openai/whisper/blob/main/LICENSE), [model host](https://huggingface.co/ggerganov/whisper.cpp) |
+| OpenAI Whisper weights converted to ggml | Base / Medium / Large-v3 | [Whisper license](https://github.com/openai/whisper/blob/main/LICENSE), [model host](https://huggingface.co/ggerganov/whisper.cpp) |
 | xUnit (development tests) | 2.9.3 | [Apache 2.0](https://github.com/xunit/xunit/blob/main/LICENSE) |
 | .NET runtime / Windows Desktop runtime | .NET 8 | [MIT and notices](https://github.com/dotnet/runtime/blob/main/LICENSE.TXT) |
 
 The JFK speech sample used for local verification comes from [whisper.cpp samples](https://github.com/ggml-org/whisper.cpp/tree/master/samples). It is not part of the application distribution.
 
-The 0.2.3 bundle includes multilingual `ggml-base.bin` from the model host listed above: 147,951,465 bytes, SHA-256 `60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe`. Its upstream Whisper MIT license is included at `licenses/WHISPER-MODEL-LICENSE.txt`.
+The game bundle includes multilingual `ggml-base.bin` from the model host listed above: 147,951,465 bytes, SHA-256 `60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe`. Its upstream Whisper MIT license is included at `licenses/WHISPER-MODEL-LICENSE.txt`.
 
-This is an unpublished development prototype. Before public distribution, include the complete license texts and required copyright notices for all shipped managed and native dependencies, and select the application's public license.
+The game package includes the upstream Whisper.net, whisper.cpp, NAudio, Sherpa managed-binding and .NET license texts under `licenses/`, including .NET third-party notices. The optional transcription package includes its own runtime and speaker-model notices. The application's separate license is in `LICENSE`.
 
 ## Speaker labels (0.4.0)
 
@@ -36,4 +36,4 @@ The public four-speaker Chinese diagnostic WAV from the segmentation release is 
 
 These components run locally. No hosted NVIDIA or OpenAI service is used.
 
-The small application includes Base and Classic speaker models only. Nemotron and NVIDIA runtime licenses accompany their optional download packs. Large-v3 uses the included Whisper MIT model license.
+The game application includes Base. Classic speaker models and their processing runtime are in the optional Transcribe audio component. Nemotron and NVIDIA runtime licenses accompany their optional download packs. Large-v3 uses the included Whisper MIT model license.

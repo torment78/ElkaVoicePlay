@@ -64,8 +64,11 @@ for file in cuda_whisper.glob('*.dll'): gpu_files['runtimes/cuda/win-x64/' + fil
 assert 'runtimes/cuda/win-x64/whisper.dll' in gpu_files
 gpu_files['licenses/WHISPER-MODEL-LICENSE.txt'] = repo/'licenses/WHISPER-MODEL-LICENSE.txt'
 catalog.append(zip_component('nvidia', 'NVIDIA GPU support', 'Speeds up Whisper and optional Nemotron on a compatible NVIDIA GPU. Requires a CUDA 13-capable NVIDIA driver. Includes app-local runtimes; it does not install or change your driver.', gpu_files))
+for item in catalog:
+    for asset in item['Assets']: asset['ReleaseTag'] = 'v0.6.0-preview.1'
 text = json.dumps(catalog, indent=2) + '\n'
-(repo/'src/ElkaVoicePlay.Shared/optional-components.json').write_text(text, encoding='utf-8')
+(repo/'src/ElkaVoicePlay.Shared/worker-components.json').write_text(text, encoding='utf-8')
+print('Rebuilt legacy model catalog. Run Publish.ps1 to compose the current application catalog.')
 (output/'optional-components.json').write_text(text, encoding='utf-8')
 for item in catalog:
     print(item['Id'], 'download bytes:', sum(a['Size'] for a in item['Assets']), 'installed bytes:', sum(f['Size'] for f in item['Files']), flush=True)
