@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../ElkaVoicePlay.Shared/ElkaVoicePlay.Shared.csproj" />
+    <ProjectReference Include="../ElkaVoicePlay.Core/ElkaVoicePlay.Core.csproj" />
+    <PackageReference Include="NAudio.Wasapi" Version="2.3.0" />
+  </ItemGroup>
+</Project>

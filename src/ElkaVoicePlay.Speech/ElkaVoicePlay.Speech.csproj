@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../ElkaVoicePlay.Shared/ElkaVoicePlay.Shared.csproj" />
+    <ProjectReference Include="../ElkaVoicePlay.Core/ElkaVoicePlay.Core.csproj" />
+    <!-- Download only the managed assembly; the metapackage would pull every operating system runtime. -->
+    <PackageDownload Include="org.k2fsa.sherpa.onnx" Version="[1.13.8]" />
+    <Reference Include="sherpa-onnx">
+      <HintPath>$(NuGetPackageRoot)org.k2fsa.sherpa.onnx/1.13.8/lib/net8.0/sherpa-onnx.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <PackageReference Include="org.k2fsa.sherpa.onnx.runtime.win-x64" Version="1.13.8" />
+    <PackageReference Include="Whisper.net" Version="1.9.1" />
+    <PackageReference Include="Whisper.net.Runtime" Version="1.9.1" />
+  </ItemGroup>
+</Project>

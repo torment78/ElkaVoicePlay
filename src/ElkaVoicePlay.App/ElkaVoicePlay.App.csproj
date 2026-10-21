@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <AssemblyName>ElkaVoicePlay</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../ElkaVoicePlay.ModelWorker/ElkaVoicePlay.ModelWorker.csproj" ReferenceOutputAssembly="false" Private="false" />
+    <Content Include="../../artifacts/gpu-downloads/ggml-base.bin" Condition="Exists('../../artifacts/gpu-downloads/ggml-base.bin')" Link="Models/ggml-base.bin" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../artifacts/speaker-models/segmentation.onnx" Condition="Exists('../../artifacts/speaker-models/segmentation.onnx')" Link="Models/Speakers/segmentation.onnx" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../artifacts/speaker-models/embedding.onnx" Condition="Exists('../../artifacts/speaker-models/embedding.onnx')" Link="Models/Speakers/embedding.onnx" CopyToOutputDirectory="PreserveNewest" />
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+    <ProjectReference Include="../ElkaVoicePlay.Core/ElkaVoicePlay.Core.csproj" />
+    <ProjectReference Include="../ElkaVoicePlay.Audio/ElkaVoicePlay.Audio.csproj" />
+    <ProjectReference Include="../ElkaVoicePlay.Speech/ElkaVoicePlay.Speech.csproj" />
+    <ProjectReference Include="../ElkaVoicePlay.Input/ElkaVoicePlay.Input.csproj" />
+  </ItemGroup>
+  <Target Name="CopyModelWorker" AfterTargets="Build">
+    <ItemGroup><WorkerFiles Include="../ElkaVoicePlay.ModelWorker/bin/$(Platform)/$(Configuration)/$(TargetFramework)/win-x64/**/*" Exclude="../ElkaVoicePlay.ModelWorker/bin/$(Platform)/$(Configuration)/$(TargetFramework)/win-x64/Cuda/**;../ElkaVoicePlay.ModelWorker/bin/$(Platform)/$(Configuration)/$(TargetFramework)/win-x64/NemoCpu/**;../ElkaVoicePlay.ModelWorker/bin/$(Platform)/$(Configuration)/$(TargetFramework)/win-x64/NemoCuda/**;../ElkaVoicePlay.ModelWorker/bin/$(Platform)/$(Configuration)/$(TargetFramework)/win-x64/runtimes/cuda/**" /></ItemGroup>
+    <Copy SourceFiles="@(WorkerFiles)" DestinationFiles="@(WorkerFiles->'$(OutDir)Workers/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

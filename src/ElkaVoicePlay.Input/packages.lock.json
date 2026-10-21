@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0-windows7.0": {
+      "elkavoiceplay.core": {
+        "type": "Project",
+        "dependencies": {
+          "ElkaVoicePlay.Shared": "[0.6.0, )"
+        }
+      },
+      "elkavoiceplay.shared": {
+        "type": "Project"
+      }
+    }
+  }
+}

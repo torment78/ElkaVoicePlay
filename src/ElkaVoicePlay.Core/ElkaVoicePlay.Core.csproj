@@ -1,0 +1,3 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup><ProjectReference Include="../ElkaVoicePlay.Shared/ElkaVoicePlay.Shared.csproj" /></ItemGroup>
+</Project>

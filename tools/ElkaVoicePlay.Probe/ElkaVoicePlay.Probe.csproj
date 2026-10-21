@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><RuntimeIdentifier>win-x64</RuntimeIdentifier></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/ElkaVoicePlay.Core/ElkaVoicePlay.Core.csproj" />
+    <ProjectReference Include="../../src/ElkaVoicePlay.Speech/ElkaVoicePlay.Speech.csproj" />
+    <ProjectReference Include="../../src/ElkaVoicePlay.Audio/ElkaVoicePlay.Audio.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><RuntimeIdentifier>win-x64</RuntimeIdentifier></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../ElkaVoicePlay.Speech/ElkaVoicePlay.Speech.csproj" />
+    <PackageDownload Include="Whisper.net.Runtime.Cuda.Windows" Version="[1.9.1]" />
+  </ItemGroup>
+</Project>
